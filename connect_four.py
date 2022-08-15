@@ -6,30 +6,35 @@ def setup_board(title):
         list1 = make_dict_reader(rboard)
         b = rewrite_board(list1,title)
         return b
-def trigger_victory(player2):
-    print(player2.name + ' wins!')
+def trigger_victory(player3):
+    print(player3.name + ' wins!')
     save = input('Save game? (y/n)\n')
     if save=='y':
         title = input('Title?\n')
         save_board(title)
     return True
-def check_victory(player2):
-    con = connections('board',player2)
+def check_victory(player3):
+    con = connections('board',player3)
     for list in con:
         if list.count('y')==3:
-            trigger_victory(player2)
+            trigger_victory(player3)
             return 'victory'
     return None
-print('Welcome to Connect Four+\nTry to beat The Master... If you dare...')
+print('Welcome to Terminal Connect Four\n')
 player1 = input('Player 1 name? \n')
+if player1:
+    master = Player(player1,'X','master')
+else:
+    master = Player('Player 1','X','master')
 print(setup_board('board'))
 switch10 = True
-if player1:
-    player = Player(player1,'O','plebe')
+player2 = input('Player 2 name?\n')
+switch10 = True
+if player2:
+    player = Player(player2,'O','plebe')
 else:
     player = Player('CPU','O','plebe')
     switch10 = False
-master = Player('The Master','X','master')
 while True:
     if switch10:
         while True:
@@ -49,7 +54,7 @@ while True:
     if v:
         break
     while True:
-        move2 = input('The Master\'s move:\n')
+        move2 = input('{}\'s move:\n'.format(master.name))
         if move2=='place':
             print('')
             output = master.place(input('Placement?\n'))
