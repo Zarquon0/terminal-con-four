@@ -57,7 +57,7 @@ def check_diagonals(list1,i,n,player):
     conditions = [condition_list1,condition_list2,condition_list3,condition_list4]
     return condition_eval(list1,conditions,player)
 def connections(title,player):
-    with open('./ConnectFour/{}.csv'.format(title),'r') as board:
+    with open('./{}.csv'.format(title),'r') as board:
         list1 = make_dict_reader(board)
         bigger_list = []
         for i in range(0,6):
