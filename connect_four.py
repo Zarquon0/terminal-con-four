@@ -2,7 +2,7 @@ from utility_function import save_board,make_dict_reader,Player,rewrite_board
 from connect_four_cpu import move,connections
 
 def setup_board(title):
-    with open('./ConnectFour/reserve_board.csv','r') as rboard:
+    with open('./reserve_board.csv','r') as rboard:
         list1 = make_dict_reader(rboard)
         b = rewrite_board(list1,title)
         return b
