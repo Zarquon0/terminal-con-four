@@ -27,7 +27,7 @@ class Player():
         self.level = level
     def make_move(self,location,func=rewrite_board,title='board'):
         location = str(location)
-        with open('./ConnectFour/board.csv','r') as board:
+        with open('./board.csv','r') as board:
             list1 = make_dict_reader(board)
             num = 5
             try:
